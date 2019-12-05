@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    margin-top: 12px;
+    list-style-type: none;
+    background-color: transparent;
+    color: #407088;
+    font-size: 30px;
+    margin-left: 30px;
+    padding: 5px;
+}
+
+.campus {
+    font-family: "Merienda One", cursive;
+    text-shadow: 1px 1px 2px black;
+    float: left;
+    background-color: transparent;
+}
+
+.live {
+    background-color: #b71c1c;
+    margin-left: 4px;
+    color: white;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    -webkit-animation: changeopacity 5s infinite;
+    animation: changeopacity 5s infinite;
+}
+
+@-webkit-keyframes changeopacity {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes changeopacity {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+#navbar {
+    width: 100%;
+    height: 75px;
+    background-color: white;
+    z-index: 2;
+    box-shadow: 0 8px 6px -6px black;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+}
+
+#navbar div ul li[class="right"] {
+    list-style-type: none;
+    float: right;
+    margin-right: 2%;
+}
+
+#navbar div ul li[class="left"] {
+    float: left;
+}
+
+#button button {
+    margin-top: 28px;
+    width: 5em;
+    font-size: 16px;
+    background-color: transparent;
+    color: #407088;
+    border-style: solid;
+    border-color: white;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+
+#button button:hover {
+    color: #f9c22d;
+    background-color: white;
+    border-color: white;
+}
+
+#button button:last-child {
+    margin-right: 0%;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.text-container {
+    padding-top: 85px;
+    position: relative;
+    background-color: #e0e0e0;
+    text-align: center;
+}
+
+#detail {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    padding: 5px;
+    position: relative;
+    width: 81%;
+    height: auto;
+    background-color: white;
+    box-shadow: 5px 10px 18px black;
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 20px;
+    transition: all 0.5s ease;
+}
+
+#detail:hover {
+    transform: scale(1.05, 1.05);
+    background-color: #e6ffff;
+}
+
+h3 {
+    color: #407088;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.line {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    height: 3px;
+    background: #407088;
+}
+
+.team-section {
+    overflow: hidden;
+    background-color: #bbdefb;
+    padding: 20px;
+}
+
+.team-section h2 {
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    font-size: 3.5vw;
+}
+
+.ps a {
+    display: inline-block;
+    margin: 10px 30px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.ps a img {
+    width: 300px;
+    height: 300px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: -webkit-filter 0.5s ease;
+    transition: filter 0.5s ease;
+    transition: filter 0.5s ease, -webkit-filter 0.5s ease;
+}
+
+#p1 .name {
+    margin-left: -730px;
+}
+
+#p3 .name {
+    margin-left: 730px;
+}
+
+.ps a img:hover {
+    -webkit-filter: none;
+    filter: none;
+}
+
+.name {
+    font-size: 30px;
+    font-family: "Merienda One", cursive;
+}
+
+.section {
+    height: 0;
+    overflow: hidden;
+}
+
+.section:target {
+    height: 50px;
+}
+
+@media screen and (max-width: 1150px) {
+    #p1 .name {
+        margin-left: 0;
+    }
+
+    #p3 .name {
+        margin-left: 0;
+    }
+}
