@@ -1,0 +1,19 @@
+{
+    "name": "CampusLive",
+    "short_name": "campuslive",
+    "lang": "en-GB",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "media/organizers.jpg",
+            "sizes": "1998x1846",
+            "type": "image/jpg"
+        },
+        {
+            "src": "media/students.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

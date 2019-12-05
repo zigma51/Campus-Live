@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>CampusLive</title>
+        <!-- <link rel="shortcut icon" type="image/png" href="media/favicon1.png" /> -->
+        <link rel="shortcut icon" type="image/x-icon" href="media/favicon1.ico" />
+        <link rel="stylesheet" href="css/index.css" />
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+        <script type="text/javascript" src="scripts/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+        <meta name="keywords" content="footer, address, phone, icons" />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="fonts/fontawesome/css/fontawesomeicons.css" />
+        <link href="fonts/CodaCaption/CodeCaption.css" rel="stylesheet" />
+        <link href="fonts/MeriendaOne/MeriendaOne.css" rel="stylesheet" />
+        <link href="fonts/BaiJamjuree/BaiJamjuree.css" rel="stylesheet" />
+        <link href="fonts/Roboto/Roboto.css" rel="stylesheet" />
+        <link rel="manifest" href="manifest.json" />
+        <link rel="stylesheet" href="css/reset.css" />
+    </head>
+
+    <body>
+        <script>
+            function statusChangeCallback(response) {
+                // Called with the results from FB.getLoginStatus().
+                console.log("statusChangeCallback");
+                console.log(response); // The current login status of the person.
+                if (response.status === "connected") {
+                    // Logged into your webpage and Facebook.
+                    testAPI();
+                } else {
+                    // Not logged into your webpage or we are unable to tell.
+                    document.getElementById("status").innerHTML =
+                        "Please log " + "into this webpage.";
+                }
+            }
+
+            function checkLoginState() {
+                // Called when a person is finished with the Login Button.
+                FB.getLoginStatus(function(response) {
+                    // See the onlogin handler
+                    statusChangeCallback(response);
+                });
+            }
+
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId: "2096328463800405",
+                    cookie: false, // Enable cookies to allow the server to access the session.
+                    xfbml: true, // Parse social plugins on this webpage.
+                    version: "v4.0" // Use this Graph API version for this call.
+                });
+
+                // FB.getLoginStatus(function(response) {
+                //     // Called after the JS SDK has been initialized.
+                //     statusChangeCallback(response); // Returns the login status.
+                // });
+            };
+
+            (function(d, s, id) {
+                // Load the SDK asynchronously
+                var js,
+                    fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, "script", "facebook-jssdk");
+
+            function testAPI() {
+                // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+                // console.log("Welcome!  Fetching your information.... ");
+                FB.api("/me", function(response) {
+                    // console.log("Successful login for: " + response.name);
+                    location.href='./php/events.php';
+                    document.getElementById("status").innerHTML =
+                        "Thanks for logging in, " + response.name + "!";
+                });
+            }
+        </script>
+        <nav id="navbar" class="sticky">
+            <span class="left logo campus">Campus<span class="logo live">Live</span></span>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-links">
+                <li class="icon"><button type="button" name="btn-menu">&#9776;</button></li>
+                <li class="right">
+                    <a href="#login">
+                        <button type="button" name="btn-login" id="btn-login">Login</button>
+                    </a>
+                </li>
+                <li class="right">
+                    <a href="#signup">
+                        <button type="button" name="btn-login" id="btn-login">Signup</button>
+                    </a>
+                </li>
+                <li class="right">
+                    <button
+                        type="button"
+                        name="btn-aboutus"
+                        onclick="location.href='html/aboutus.html'"
+                    >
+                        About Us
+                    </button>
+                </li>
+            </ul>
+            <div id="login" class="modal">
+                <div class="login__content">
+                    <a href="#" class="modal__close">&times;</a>
+                    <h1><strong>Welcome.</strong> Please login.</h1>
+                    <form name="login" action="php/login.php" method="POST">
+                        <fieldset>
+                            Username:
+                            <input class="textfield" type="text" name="username" required />
+                            Password:<input
+                                class="textfield"
+                                type="password"
+                                name="password"
+                                required
+                            />
+                            <p>
+                                <span><a href="#forgotpassword">Forgot Password?</a></span>
+                                <span>
+                                    <a href="#deleteaccount" id="delacc">Delete Account?</a>
+                                </span>
+                            </p>
+                            <input type="submit" name="logsubmit" value="Login" />
+                        </fieldset>
+                    </form>
+                    <p><span class="btn-round">or</span></p>
+                    <fb:login-button size="xlarge"
+                        scope="public_profile,email"
+                        onlogin="checkLoginState();">
+                        Login with Facebook
+                    </fb:login-button>
+                    <p style="text-align: center; padding-top: 10px;">
+                        <span
+                            >Not a member?<span
+                                ><a href="#signup" style="color: black;"> Register</a></span
+                            ></span
+                        >
+                    </p>
+                </div>
+            </div>
+            <div id="signup" class="modal">
+                <div class="signup__content">
+                    <a href="#" class="modal__close">&times;</a>
+                    <h1><strong>Welcome.</strong> Please Register.</h1>
+                    <form name="signup" action="php/register.php" method="POST">
+                        <fieldset>
+                            Username:
+                            <input class="textfield" type="text" name="username" required />
+                            Password:<input
+                                class="textfield"
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}$"
+                                type="password"
+                                title="Password must contain atleast 1 lowercase, 1 uppercase, 1 special character, 1 number, no whitespaces and atleast 8 in length"
+                                name="password"
+                                id="password"
+                                required
+                            />
+                            Confirm Password:<input
+                                class="textfield"
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}$"
+                                type="password"
+                                name="confpassword"
+                                id="confirm_password"
+                                required
+                            />
+                            Email:<input class="textfield" type="email" name="email" required />
+                            Phone:<input
+                                class="textfield"
+                                type="text"
+                                pattern="[789][0-9]{9}"
+                                name="phone"
+                                title="Invalid Contact Number"
+                                required
+                            />
+                            Date of Birth:<input
+                                class="textfield"
+                                type="date"
+                                name="dob"
+                                required
+                            />
+                            <input type="submit" name="regsubmit" id="register" value="Register" />
+                        </fieldset>
+                    </form>
+                    <p style="text-align: center; padding-top: 10px;">
+                        <span
+                            >Already a member?<span
+                                ><a href="#login" style="color: black;"> Login</a></span
+                            ></span
+                        >
+                    </p>
+                </div>
+            </div>
+            <div id="forgotpassword" class="modal">
+                <div class="pass__content">
+                    <a href="#" class="modal__close">&times;</a>
+                    <h1><strong>Change Password</strong></h1>
+                    <form name="change_password" action="php/change_my_password.php" method="POST">
+                        <fieldset>
+                            Username:
+                            <input class="textfield" type="text" name="username" required />
+                            Phone:<input
+                                class="textfield"
+                                type="text"
+                                pattern="[789][0-9]{9}"
+                                name="phone"
+                                title="Invalid Contact Number"
+                                required
+                            />
+                            New Password:<input
+                                class="textfield"
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}$"
+                                type="password"
+                                title="Password must contain atleast 1 lowercase, 1 uppercase, 1 special character, 1 number, no whitespaces and atleast 8 in length"
+                                name="password"
+                                id="chg_password"
+                                required
+                            />
+                            Confirm New Password:<input
+                                class="textfield"
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}$"
+                                type="password"
+                                name="confpassword"
+                                id="chg_confirm_password"
+                                required
+                            />
+                            <input
+                                type="submit"
+                                name="changepassword"
+                                id="chg_passwd"
+                                value="Change Password"
+                            />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div id="deleteaccount" class="modal">
+                <div class="delacc__content">
+                    <a href="#" class="modal__close">&times;</a>
+                    <h1><strong>Enter Account details</strong></h1>
+                    <form name="deleteaccount" action="php/delete_account.php" method="POST">
+                        <fieldset>
+                            Username:
+                            <input class="textfield" type="text" name="username" required />
+                            Password:<input
+                                class="textfield"
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}$"
+                                type="password"
+                                title="Password must contain atleast 1 lowercase, 1 uppercase, 1 special character, 1 number, no whitespaces and atleast 8 in length"
+                                name="password"
+                                required
+                            />
+                            Email:<input class="textfield" type="email" name="email" required />
+                            Phone:<input
+                                class="textfield"
+                                type="text"
+                                pattern="[789][0-9]{9}"
+                                name="phone"
+                                title="Invalid Contact Number"
+                                required
+                            />
+                            <input
+                                type="submit"
+                                name="regsubmit"
+                                id="del_account"
+                                value="Delete Account"
+                            />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <video autoplay muted loop>
+                <source src="media/Mosaic.mp4" type="video/mp4" />
+            </video>
+        </div>
+
+        <div class="tag-line">
+            <i>The World is your Campus</i>
+        </div>
+        <div class="inner-tag-line">
+            Join in to one of the biggest Campus in Mumbai.We've got Seminars, Tech-fests, Cultural
+            Events <br />
+            and much more to take your Engineering life to the next level
+        </div>
+
+        <div id="team">
+            <h2>Features of CampusLive</h2>
+            <p>Join in on the fun!</p>
+            <div class="content-top">
+                <br />
+                <div class="content-element">
+                    <img src="media/students.png" alt="Boss" style="width: 50%;" />
+                    <div class="content-text">
+                        <h3>Students</h3>
+                        <p>
+                            You can opt for any and all events happening<br />
+                            in the college just by registering for the event.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-element">
+                    <img src="media/organizers.png" alt="Boss" style="width: 50%;" />
+                    <div class="content-text">
+                        <h3>Organizers</h3>
+                        <p>
+                            You can host your own events in your college <br />
+                            by following a few simple steps.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-element">
+                    <img src="media/events.png" alt="Boss" style="width: 50%;" />
+                    <div class="content-text">
+                        <h3>Events</h3>
+                        <p>Events that will make your bones groove</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-bottom">
+                <div class="content-element">
+                    <img id="games" src="media/games.png" alt="Boss" />
+                    <div class="content-text">
+                        <h3 id="games-text">Games</h3>
+                        <p id="games-text">
+                            Lots of fun games and techy innovations <br />
+                            coming your way.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-element">
+                    <img id="nowaiting" src="media/nowaiting.png" alt="Boss" />
+                    <div class="content-text">
+                        <h3 id="nowaiting-text">No Waiting</h3>
+                        <p id="nowaiting-text">
+                            You don't have to wait for anything, just login <br />
+                            and register for the event you like.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-for-organizers">
+            <div class="text-info">
+                <br />
+                <h3>CampusLive for Organizers</h3>
+                <br />
+                <p>
+                    We understand that you all find it difficult to promote your events effectively
+                    via exisitng social netwroking sites.Even after giving your best shot, at the
+                    end of the day you find that your event didnt reach the audience.Thats why
+                    CampusLive aims to help organizers to showcase their event to larger audience as
+                    well as providing other facilities like posting registration forms, feedbacks
+                    etc.
+                </p>
+            </div>
+            <div class="img"></div>
+        </div>
+
+        <div class="card-container-1">
+            <div class="card1">
+                <div class="card-img"></div>
+                <div class="card-text">
+                    <br />
+                    <br />
+                    <p>
+                        Once logged in activate the <br />
+                        organizer button in accounts<br />
+                        and mail us the respective documents
+                    </p>
+                </div>
+            </div>
+            <div class="card2">
+                <div class="card-img"></div>
+                <div class="card-text">
+                    <br />
+                    <br />
+                    <p>
+                        Fill in the details of the event like Name, Venue, Date,<br />
+                        Entry Fee. Also don't forget to upload some media.
+                    </p>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="card-img"></div>
+                <div class="card-text">
+                    <br />
+                    <br />
+                    <p>
+                        Finally submit the Event and <br />
+                        it'll be shown to all the concerned students!!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-for-students">
+            <div class="img"></div>
+            <div class="text-info">
+                <br />
+                <h3>CampusLive for Students</h3>
+                <br />
+                <p>
+                    Being a student, attending College fests, Cultural events, Seminars etc are part
+                    and parcel of your student life. Not only they help to relieve your academic
+                    stress and replenish your mood but also lets you meet other peers sharing same
+                    intrests. CampusLive allows you to select your intrests and brings all the
+                    events relevant to you at your finger tips. So what are you waiting for join
+                    CampusLive now and explore a whole new world of fun.
+                </p>
+            </div>
+        </div>
+        <div class="card-container-2">
+            <div class="card1">
+                <div class="card-img"></div>
+                <div class="card-text">
+                    <br />
+                    <br />
+                    <p>
+                        Make sure you keep your profile <br />
+                        up-to-date with respect to your information.
+                    </p>
+                </div>
+            </div>
+            <div class="card2">
+                <div class="card-img"></div>
+                <div class="card-text">
+                    <br />
+                    <br />
+                    <p>
+                        Select your areas of interest <br />
+                        along with the colleges you <br />
+                        wish to attend events.
+                    </p>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="card-img"></div>
+                <div class="card-text">
+                    <br />
+                    <br />
+                    <p>
+                        Receive information regarding all the events you selected in your feed.It's
+                        as simple as that!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer-distributed">
+            <div class="footer-left">
+                <h3>Campus<span>Live</span></h3>
+
+                <p class="footer-links">
+                    <a href="#">Home</a>
+                    ·
+                    <a id="contact" href="./html/aboutus.html">About</a>
+                </p>
+                <div class="footer-icons">
+                    <a
+                        href="https://www.facebook.com/campus.live.566"
+                        ><i class="fa fa-facebook"></i
+                    ></a>
+                    <a href="https://twitter.com/CampusLive4"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/ourcampuslive/"
+                        ><i class="fa fa-instagram"></i
+                    ></a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ourcampuslive@gmail.com"
+                        ><i class="fa fa-google"></i
+                    ></a>
+                </div>
+                <p class="footer-company-name">&copy; CampusLive 2019</p>
+            </div>
+
+            <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>SFIT, Borivali</span> Mumbai, Maharashtra</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+91 9874563210</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jmamtora99@gmail.com"
+                            >Jaineel Mamtora |
+                        </a>
+                        <a
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=surajchatterjee5111@gmail.com"
+                            >Suraj Chatterjee |
+                        </a>
+                        <a
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=rohitchoudhari18n@gmail.com"
+                            >Karan Sandam
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.8916665001243!2d72.85360841394171!3d19.243552586991996!2m3!1f0!2f0!3f0!3m2!111024!2i768!4f13.1!3m3!1m2!1s0x3be7b13affffffff%3A0xfd071f1d3a7844ef!2sSt.%20Francis%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1567099646712!5m2!1sen!2sin"
+                    width="400"
+                    height="250"
+                    frameborder="0"
+                    allowfullscreen=""
+                ></iframe>
+            </div>
+        </footer>
+        <script src="js/index.js"></script>
+    </body>
+</html>
