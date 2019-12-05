@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="catalog.xsl"?>
+<catalog>
+    <cd>
+        <Event>Pragati</Event>
+        <org>SFIT</org>
+        <stud>150+</stud>
+    </cd>
+    <cd>
+        <Event>GRE</Event>
+        <org>ITSA</org>
+        <stud>100+</stud>
+    </cd>
+    <cd>
+        <Event>TEDX SFIT</Event>
+        <org>Ecell</org>
+        <stud>90+</stud>
+    </cd>
+</catalog>

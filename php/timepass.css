@@ -1,0 +1,10 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.disp{
+	background-color: yellow;
+	margin: 10px 10px;
+	color: green;
+}
