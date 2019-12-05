@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CampusLive Add Event</title>
+        <link rel="shortcut icon" type="image/png" href="../media/favicon1.png" />
+        <link rel="stylesheet" type="text/css" href="../css/add_event.css" />
+        <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/png" href="./media/favicon1.png" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+
+    <body>
+        <nav id="navbar" class="sticky">
+            <span class="left logo campus">Campus<span class="logo live">Live</span></span>
+            <ul class="nav-links">
+                <li class="right">
+                    <button
+                        type="button"
+                        name="btn-home"
+                        onclick="location.href='../php/events.php'"
+                    >
+                        Home
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div id="form">
+            <form
+                name="Add-Event"
+                method="post"
+                action="../php/addevent.php"
+                enctype="multipart/form-data"
+            >
+                <h2>Add Event</h2>
+                <div class="row">
+                    <label>Event Name</label>
+                    <input type="text" name="event_name" required />
+                </div>
+                <div class="row">
+                    <label>Event Type</label>
+                    <select name="event_type">
+                        <option value="seminar">Seminar</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="fest">Tech-fest</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label>Organising Committee</label>
+                    <input type="text" name="event_org" required />
+                </div>
+                <div class="row">
+                    <label>Venue</label>
+                    <input type="text" name="event_venue" />
+                </div>
+                <div class="row">
+                    <label>Event Description</label>
+                    <textarea name="event_desc" required></textarea>
+                </div>
+                <div class="row">
+                    <label>Choose a display image for the Event:</label>
+                    <input type="file" name="event_image" required />
+                </div>
+                <div>
+                    <div class="row">
+                        <label>Choose Event Date</label>
+                        <input name="event_date" type="date" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Register Event" />
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

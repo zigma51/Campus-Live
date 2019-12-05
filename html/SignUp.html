@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CampusLive Sign-Up</title>
+        <link rel="stylesheet" type="text/css" href="../css/SignUp.css" />
+        <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/png" href="../media/favicon1.png" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+
+    <body>
+        <div id="navbar" class="sticky">
+            <div>
+                <ul>
+                    <div id="button">
+                        <li type="none" class="left logo campus">
+                            Campus<span class="logo live">Live</span>
+                        </li>
+                        <li class="right">
+                            <button
+                                type="button"
+                                name="btn-home"
+                                onclick="location.href='../index.html'"
+                            >
+                                Home
+                            </button>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div id="form">
+            <form name="SignUp" method="post">
+                <h2>Add Event</h2>
+                <div class="row">
+                    <label>Event Name</label>
+                    <input type="text" name="name" />
+                </div>
+                <div class="row">
+                    <label>Event Type</label>
+                    <select name="event_type">
+                        <option value="seminar">Seminar</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="fest">Tech-fest</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label>Organising Committee</label>
+                    <input type="text" name="committee" />
+                </div>
+                <div class="row">
+                    <label>Venue</label>
+                    <input type="text" name="venue" />
+                </div>
+                <div class="row">
+                    <label>Event Description</label>
+                    <textarea rows="7" cols="70" name="event_desc"></textarea>
+                </div>
+                <div class="row">
+                    <label>Choose a display image for the Event:</label>
+                    <input type="file" name="event_image" />
+                </div>
+                <div>
+                    <div class="row">
+                        <label>Choose Event Date</label>
+                        <input name="dof" type="date" />
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="../html/main_page.html">
+                        <input
+                            type="button"
+                            value="Register"
+                            class="button"
+                            onclick="return validateForm()"
+                        />
+                    </a>
+                </div>
+            </form>
+        </div>
+        <!-- <script src="../js/SignUp.js"></script> -->
+    </body>
+</html>
