@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Coda Caption';
+    src: url('CodaCaption-ExtraBold.woff2') format('woff2'),
+        url('CodaCaption-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
